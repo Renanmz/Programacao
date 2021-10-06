@@ -1,11 +1,10 @@
 $(function() { // quando o documento estiver pronto/carregado
-import x from front
     
     $.ajax({
         url: 'http://localhost:5000/lista',
         method: 'GET',
         dataType: 'json', // os dados são recebidos no formato json
-        success: listar, // chama a função listar para processar o resultado
+        success: lista, // chama a função listar para processar o resultado
         error: function() {
             alert("erro ao ler dados, verifique o backend");
         }
@@ -22,8 +21,5 @@ import x from front
             // adiciona a linha no corpo da tabela
             $('#corpoTabelaProduto').append(lin);
         }
-    print (x)
     }
-
-
 });
