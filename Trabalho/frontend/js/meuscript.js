@@ -38,11 +38,12 @@ function exibir_Produtos() {
     });
 
 
-    $(document).on("click", "#IncluirPessoa", function() { 
+    $(document).on("click", "#IncluirProduto", function() { 
         nome = $("#campoNome").val(); 
-        email = $("#campoEmail").val(); 
-        tel = $("#campoTelefone").val(); 
-        var dados = JSON.stringify({ nome: nome, email: email, telefone: tel }); 
+        preco = $("#campoPreço").val(); 
+        peso = $("#campoPeso").val(); 
+        barra = $("#campoBarra").val(); 
+        var dados = JSON.stringify({ nome: nome, preco: preco, peso: peso, barra: barra }); 
         $.ajax({ 
             url: 'http://localhost:5000/incluir', 
             type: 'POST', 
@@ -53,3 +54,27 @@ function exibir_Produtos() {
             error: erroAoIncluir 
         });
     })
+
+        function ProdutoIncluido (retorno) { 
+            if (retorno.resultado == "ok") { 
+                alert("Produto incluída com sucesso!"); 
+                $("#campoNome").val(""); 
+                $("#campoPreço").val(""); 
+                $("#campoPeso").val(""); 
+                $("#campoBarra").val(""); 
+            } else { 
+                alert(retorno.resultado + ":" + retorno.detalhes); 
+            } 
+        } 
+        function erroAoIncluir (retorno) { 
+            alert("ERRO: "+retorno.resultado + ":" + retorno.detalhes); 
+        }
+
+    $('#modalIncluirProdutos').on('hide.bs.modal', function (e) { 
+            if (! $("#tabelaPessoas").hasClass('invisible')) { 
+                exibir_pessoas(); 
+            } 
+        }); 
+             
+               
+    mostrar_conteudo("conteudoInicial"); 
