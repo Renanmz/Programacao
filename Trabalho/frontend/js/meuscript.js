@@ -1,5 +1,4 @@
 $(function () {
-
     function exibir_Produtos() {
         $.ajax({
             url: 'http://localhost:5000/lista',
@@ -23,15 +22,19 @@ $(function () {
                     'class="ExcluirProduto"><img src="img/excluir.png" ' +
                     'alt="ExcluirProduto" title="ExcluirProduto" width=40px height=40px></a>' +
                     '</td>' +
+                    '<td><a href=# id="Editar' + Produto[i].id + '" ' +
+                    'class="EditarProduto" data-target="#modalEditar"><p>Editar</p></a>'
+                '</td>' +
                     '</tr>';
                 $('#corpoTabelaProduto').append(lin);
             }
         }
     }
     function mostrar_conteudo(identificador) {
-        $("#TabelaProduto").addClass("invisible");
-        $("#conteudoInicial").addClass("invisible");
-        $("#" + identificador).removeClass("invisible");
+        $("#TabelaProduto").addClass("d-none");
+        $("#conteudoInicial").addClass("d-none");
+        
+        $("#" + identificador).removeClass("d-none");
     }
 
 
@@ -66,7 +69,7 @@ $(function () {
         if (retorno.resultado == "ok") {
             alert("Produto incluída com sucesso!");
             $("#campoNome").val("");
-            $("#campoPreço").val("");
+            $("#campoPreco").val("");
             $("#campoPeso").val("");
             $("#campoBarra").val("");
         } else {
@@ -78,7 +81,7 @@ $(function () {
     }
 
     $('#modalIncluirProdutos').on('hide.bs.modal', function (e) {
-        if (!$("#tabelaPessoas").hasClass("invisible")) {
+        if (!$("#tabelaPessoas").hasClass("d-none")) {
             exibir_pessoas();
         }
     });
@@ -109,6 +112,29 @@ $(function () {
             alert("erro ao excluir dados, verifique o backend: ");
         }
     })
+    $(document).on("click", ".EditarProduto", function () {
+        var componente_clicado = $(this).attr('id');
+        var nome_icone = "Editar";
+        var id_Produto = componente_clicado.substring(nome_icone.length);
+        $.ajax({
+            url: 'http://localhost:5000/VerificarProduto/' + id_Produto,
+            method: 'GET',
+            dataType: 'json',
+            success: EditarProduto,
+            error: erroAoEditar
+        });
+    })
 
+    function EditarProduto(retorno) {
+        mostrar_conteudo("modalEditar");
 
+        $("#campoNome2").val(retorno['nome']);
+        $("#campoPreco2").val(retorno['preco']);
+        $("#campoPeso2").val(retorno['peso']);
+        $("#campoBarra2").val(retorno['barra']);
+    }
+
+    function erroAoEditar(retorno) {
+        alert("ERRO: " + retorno.resultado + ":" + retorno.detalhes);
+    }
 });

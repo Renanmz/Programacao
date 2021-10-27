@@ -29,7 +29,7 @@
 
 
     <div id="corpoDaPagina">
-        <div id="conteudoInicial" class="invisible">
+        <div id="conteudoInicial" class="d-none">
             Bem vindo ao cadastro de produtos.
         </div>
 
@@ -54,8 +54,8 @@
                                     cadastrar.</small>
                             </div>
                             <div class="form-group">
-                                <label for="campoPreço">Preço</label>
-                                <input type="text" class="form-control" id="campoPreço" aria-describedby="PreçoHelp"
+                                <label for="campoPreco">Preço</label>
+                                <input type="text" class="form-control" id="campoPreco" aria-describedby="PreçoHelp"
                                     placeholder="Preço">
                                 <small id="PreçoHelp" class="form-text text-muted">Seu preco inteiro sem
                                     descontos.</small>
@@ -82,9 +82,54 @@
                 </div>
             </div>
         </div>
+                    <!--form Editar-->
+        <div class="modal fade" id="modalEditar" tabindex="0" role="dialog" aria-labelledby="exampleModalLabel2"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel2">Incluir Produtos</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="campoNome2">Nome</label>
+                                <input type="text" class="form-control" id="campoNome2" aria-describedby="nomeHelp2">
+                                <small id="nomeHelp2" class="form-text text-muted">Informe nome do produto que desejas
+                                    cadastrar.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="campoPreco2">Preço</label>
+                                <input type="text" class="form-control" id="campoPreco2" aria-describedby="PreçoHelp2">
+                                <small id="PreçoHelp2" class="form-text text-muted">Seu preco inteiro sem
+                                    descontos.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="campoPeso2">Peso</label>
+                                <input type="text" class="form-control" id="campoPeso2" aria-describedby="PesoHelp2">
+                                <small id="PesoHelp2" class="form-text text-muted">O peso do produto em questao.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="campoBarra2">Barra</label>
+                                <input type="text" class="form-control" id="campoBarra2" aria-describedby="BarraHelp2">
+                                <small id="BarraHelp2" class="form-text text-muted">O código de barra completo do
+                                    Produto.</small>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button id="IncluirProduto" type="button" class="btn btn-primary">Incluir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="container">
-            <table class="table invisible table-striped table-hover" id="TabelaProduto">
+            <table class="table d-none table-striped table-hover" id="TabelaProduto">
                 <thead>
                     <tr>
                         <th scope="col">Nome</th>

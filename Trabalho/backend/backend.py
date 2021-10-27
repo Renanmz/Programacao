@@ -34,7 +34,7 @@ def lista():
 
 
 @app.route("/ExcluirProduto/<int:Produtoid>", methods=['DELETE'])
-def excluir_pessoa(Produtoid):
+def excluir_produto(Produtoid):
     resposta = jsonify({"resultado": "ok", "detalhes": "ok"})
     try:
         Produto.query.filter(Produto.id == Produtoid).delete()
@@ -43,6 +43,16 @@ def excluir_pessoa(Produtoid):
         resposta = jsonify({"resultado": "erro", "detalhes": str(e)})
     resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta
+
+@app.route("/VerificarProduto/<int:Produtoid>")
+def verificar_produto(Produtoid):
+    produto_var = Produto.query.get(Produtoid)
+    retorno = produto_var.json()
+    resposta = jsonify(retorno)
+    resposta.headers.add("Access-Control-Allow-Origin", "*")
+    return resposta
+
+
 
 
 app.run(debug=True)
