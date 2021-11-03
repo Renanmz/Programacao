@@ -52,7 +52,27 @@ def verificar_produto(Produtoid):
     resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta
 
+@app.route("/AlterarProduto", methods=['post'])
+def alterar_produto():
+    resposta = jsonify({"resultado": "ok", "detalhes": "ok"})
+    dados = request.get_json()
+    Produtoid = dados['id']
+    p = Produto.query.get(Produtoid)
+    try:
+        p.nome = dados['nome']
+        p.preco = dados['preco']
+        p.peso = dados['peso']
+        p.barra = dados['barra']
+        db.session.commit()
+    except Exception as e:
+        resposta = jsonify({"resultado": "erro", "detalhes": str(e)})
+    resposta.headers.add("Access-Control-Allow-Origin", "*")   
+    return resposta
 
 
 
 app.run(debug=True)
+
+
+
+#p.nome = dados['nome']

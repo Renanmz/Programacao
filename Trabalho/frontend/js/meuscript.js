@@ -23,7 +23,7 @@ $(function () {
                     'alt="ExcluirProduto" title="ExcluirProduto" width=40px height=40px></a>' +
                     '</td>' +
                     '<td><a href=# id="Editar' + Produto[i].id + '" ' +
-                    'class="EditarProduto" data-target="#modalEditar"><p>Editar</p></a>'
+                    'class="EditarProduto"><p>Editar</p></a>'
                 '</td>' +
                     '</tr>';
                 $('#corpoTabelaProduto').append(lin);
@@ -33,7 +33,7 @@ $(function () {
     function mostrar_conteudo(identificador) {
         $("#TabelaProduto").addClass("d-none");
         $("#conteudoInicial").addClass("d-none");
-        
+
         $("#" + identificador).removeClass("d-none");
     }
 
@@ -126,8 +126,8 @@ $(function () {
     })
 
     function EditarProduto(retorno) {
-        mostrar_conteudo("modalEditar");
-
+        $('#modalEditar').modal('show');
+        $("#campoId2").val(retorno['id']);
         $("#campoNome2").val(retorno['nome']);
         $("#campoPreco2").val(retorno['preco']);
         $("#campoPeso2").val(retorno['peso']);
@@ -137,4 +137,41 @@ $(function () {
     function erroAoEditar(retorno) {
         alert("ERRO: " + retorno.resultado + ":" + retorno.detalhes);
     }
+    $(document).on("click", "#AlterarProduto", function () {
+        id = $('#campoId2').val();
+        nome = $("#campoNome2").val();
+        preco = $("#campoPreco2").val();
+        peso = $("#campoPeso2").val();
+        barra = $("#campoBarra2").val();
+        var dados = JSON.stringify({ nome: nome, preco: preco, peso: peso, barra: barra, id: id });
+        $.ajax({
+            url: 'http://localhost:5000/AlterarProduto',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: dados,
+            success: AlteraçãoFeita,
+            error: erroAoAlterar
+        });
+        
+    })
+    function AlteraçãoFeita(retorno) {
+        mostrar_conteudo("conteudoInicial");
+        if (retorno.resultado == "ok") {
+            alert("Produto alterado com sucesso!");
+            $("#campoId2").val("");
+            $("#campoNome2").val("");
+            $("#campoPreco2").val("");
+            $("#campoPeso2").val("");
+            $("#campoBarra2").val("");
+        } else {
+            alert(retorno.resultado + ":" + retorno.detalhes);
+        }
+    }
+    function erroAoAlterar(retorno) {
+        alert("ERRO: " + retorno.resultado + ":" + retorno.detalhes);
+    }
+
+    
 });
+
