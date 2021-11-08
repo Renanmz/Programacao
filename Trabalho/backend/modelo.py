@@ -24,6 +24,30 @@ class Produto(db.Model):
             }
             
 
+
+
+class Localnaloja(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    setor = db.Column(db.String(254))    
+    posicao = db.Column(db.String(254))
+    andar = db.Column(db.String(254))
+    Produto_id = db.Column(db.Integer, db.ForeignKey(Produto.id), nullable=False) 
+    Produto = db.relationship("Produto")
+
+
+    def __str__(self):
+        return  self.setor + ", " + self.posicao + ", " + self.andar + ", " + str(self.Produto)
+
+    def json(self):
+        return {
+            "id" : self.id,
+            "setor" : self.setor,
+            "posicao" : self.posicao,
+            "andar" : self.andar,
+            "Produto_id":self.Produto_id, 
+            "Produto":self.Produto.json() 
+        }
 if __name__ == "__main__":
     if os.path.exists(arquivobd):
         os.remove(arquivobd)
@@ -46,4 +70,11 @@ if __name__ == "__main__":
     for p in todas:
         print(p)
         print(p.json())
+    
+    l1 = Localnaloja(setor = "escola", posicao = "5", andar = "3", Produto = p1)
+    
+    db.session.add(l1)
+    db.session.commit()
 
+    print(f"Local na loja : {l1}") 
+    print(f"Local na loja em json: {l1.json()}")

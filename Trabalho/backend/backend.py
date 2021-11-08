@@ -1,5 +1,5 @@
 from config import *
-from modelo import Produto
+from modelo import Localnaloja, Produto
 
 
 @app.route("/")
@@ -69,7 +69,13 @@ def alterar_produto():
     resposta.headers.add("Access-Control-Allow-Origin", "*")   
     return resposta
 
-
+@app.route("/listaLocal") 
+def listaLocal(): 
+   Local = db.session.query(Localnaloja).all() 
+   lista_jsons = [ x.json() for x in listaLocal ] 
+   resposta = jsonify(lista_jsons) 
+   resposta.headers.add("Access-Control-Allow-Origin", "*") 
+   return resposta
 
 app.run(debug=True)
 

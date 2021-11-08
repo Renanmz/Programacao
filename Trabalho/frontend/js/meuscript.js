@@ -67,7 +67,7 @@ $(function () {
     function ProdutoIncluido(retorno) {
         mostrar_conteudo("conteudoInicial");
         if (retorno.resultado == "ok") {
-            alert("Produto incluída com sucesso!");
+            //alert("Produto incluída com sucesso!");
             $("#campoNome").val("");
             $("#campoPreco").val("");
             $("#campoPeso").val("");
@@ -81,8 +81,8 @@ $(function () {
     }
 
     $('#modalIncluirProdutos').on('hide.bs.modal', function (e) {
-        if (!$("#tabelaPessoas").hasClass("d-none")) {
-            exibir_pessoas();
+        if (!$("#TabelaProduto").hasClass("d-none")) {
+            exibir_Produtos();
         }
     });
     mostrar_conteudo("conteudoInicial");
@@ -101,8 +101,8 @@ $(function () {
 
         function ProdutoExcluido(retorno) {
             if (retorno.resultado == "ok") {
-                $("#linha_" + id_Produto).fadeOut(1000, function () {
-                    alert("Produto removido com sucesso!");
+                $("#linha_" + id_Produto).fadeOut(500, function () {
+                    //alert("Produto removido com sucesso!");
                 });
             } else {
                 alert(retorno.resultado + ":" + retorno.detalhes);
@@ -158,7 +158,7 @@ $(function () {
     function AlteraçãoFeita(retorno) {
         mostrar_conteudo("conteudoInicial");
         if (retorno.resultado == "ok") {
-            alert("Produto alterado com sucesso!");
+            //alert("Produto alterado com sucesso!");
             $("#campoId2").val("");
             $("#campoNome2").val("");
             $("#campoPreco2").val("");
@@ -171,7 +171,12 @@ $(function () {
     function erroAoAlterar(retorno) {
         alert("ERRO: " + retorno.resultado + ":" + retorno.detalhes);
     }
-
+    $('#modalAlterarProdutos').on('hide.bs.modal', function (e) {
+        if (!$("#TabelaProduto").hasClass("d-none")) {
+            exibir_pessoas();
+        }
+    });
+    mostrar_conteudo("conteudoInicial");
     
 });
 
