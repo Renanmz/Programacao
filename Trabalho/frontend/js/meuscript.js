@@ -23,7 +23,8 @@ $(function () {
                     'alt="ExcluirProduto" title="ExcluirProduto" width=40px height=40px></a>' +
                     '</td>' +
                     '<td><a href=# id="Editar' + Produto[i].id + '" ' +
-                    'class="EditarProduto"><p>Editar</p></a>'
+                    'class="EditarProduto"><img src="img/editar.png" ' +
+                    'alt="EditarProduto" title="EditarProduto" width=40px height=40px></a>'
                 '</td>' +
                     '</tr>';
                 $('#corpoTabelaProduto').append(lin);
@@ -180,3 +181,4 @@ $(function () {
     
 });
 
+//<p>Editar</p>
