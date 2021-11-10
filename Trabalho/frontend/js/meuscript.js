@@ -24,8 +24,10 @@ $(function () {
                     '</td>' +
                     '<td><a href=# id="Editar' + Produto[i].id + '" ' +
                     'class="EditarProduto"><img src="img/editar.png" ' +
-                    'alt="EditarProduto" title="EditarProduto" width=40px height=40px></a>'
-                '</td>' +
+                    'alt="EditarProduto" title="EditarProduto" width=40px height=40px></a>' +
+                    '</td>' +
+                    '<td><a href=# id="Encontrar' + Produto[i].id + '" ' +
+                    'class="EncontrarProduto"><p>Local</p></a>' +
                     '</tr>';
                 $('#corpoTabelaProduto').append(lin);
             }
@@ -177,8 +179,28 @@ $(function () {
             exibir_pessoas();
         }
     });
-    mostrar_conteudo("conteudoInicial");
-    
+    $(document).on("click", ".EncontrarProduto", function () {
+        var componente_clicado = $(this).attr('id');
+        var nome_icone = "Localizar";
+        var id_Produto = componente_clicado.substring(nome_icone.length);
+        $.ajax({
+            url: 'http://localhost:5000/listaLocal/' + id_Produto,
+            method: 'GET',
+            dataType: 'json',
+            success: LocalizarProduto,
+            error: erroAoLocalizar
+        });
+    })
+    function LocalizarProduto(retorno){
+        $('#modalEncontrar').modal('show');
+        $("#campoSetor").val(retorno['setor']);
+        $("#campoPosicao").val(retorno['posicao']);
+        $("#campoAndar").val(retorno['andar']);
+
+    }
+    function erroAoLocalizar(retorno){
+        alert("ERRO: " + retorno.resultado + ":" + retorno.detalhes);
+    }
 });
 
 //<p>Editar</p>

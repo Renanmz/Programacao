@@ -88,7 +88,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel2">Incluir Produtos</h5>
+                        <h5 class="modal-title" id="exampleModalLabel2">Editar Produtos</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -96,7 +96,8 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <input type="text" attribute="disable" id="campoId2">
+                                <label for="campoId2">Posição na Tabela</label>
+                                <input type="text" class="form-control" id="campoId2" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="campoNome2">Nome</label>
@@ -130,7 +131,45 @@
                 </div>
             </div>
         </div>
-
+                    <!--Form Encontrar-->
+        <div class="modal fade" id="modalEncontrar" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel3"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel3">Encontrar Produto</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="campoSetor">Setor</label>
+                                <input type="text" class="form-control" id="campoSetor" aria-describedby="SetorHelp"
+                                    placeholder="Setor" readonly>
+                                <small id="SetorHelp" class="form-text text-muted">O Setor onde o produto se encontra.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="campoPosicao">Posicao</label>
+                                <input type="text" class="form-control" id="campoPosicao" aria-describedby="PosicaoHelp"
+                                    placeholder="Posicao" readonly>
+                                <small id="PosicaoHelp" class="form-text text-muted">O Posicao do produto no Setor.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="campoAndar">Andar</label>
+                                <input type="text" class="form-control" id="campoAndar" aria-describedby="AndarHelp"
+                                    placeholder="Andar" readonly>
+                                <small id="AndarHelp" class="form-text text-muted">O Andar do produto no Setor.</small>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <table class="table d-none table-striped table-hover" id="TabelaProduto">
                 <thead>
@@ -140,7 +179,8 @@
                         <th scope="col">Peso</th>
                         <th scope="col">Barra</th>
                         <th scope="col">Excluir</th>
-                        <th scope="col">Editar</th> 
+                        <th scope="col">Editar</th>
+                        <th scope="col">Encontrar</th>  
                     </tr>
                 </thead>
                 <tbody id="corpoTabelaProduto">

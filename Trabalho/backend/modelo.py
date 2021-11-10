@@ -72,8 +72,14 @@ if __name__ == "__main__":
         print(p.json())
     
     l1 = Localnaloja(setor = "escola", posicao = "5", andar = "3", Produto = p1)
+    l2 = Localnaloja(setor = "sede", posicao = "4", andar = "3", Produto = p2)
+    l3 = Localnaloja(setor = "filial", posicao = "5", andar = "4", Produto = p3)
+
     
     db.session.add(l1)
+    db.session.add(l2)
+    db.session.add(l3)
+
     db.session.commit()
 
     print(f"Local na loja : {l1}") 

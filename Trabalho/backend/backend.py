@@ -69,13 +69,12 @@ def alterar_produto():
     resposta.headers.add("Access-Control-Allow-Origin", "*")   
     return resposta
 
-@app.route("/listaLocal") 
-def listaLocal(): 
-   Local = db.session.query(Localnaloja).all() 
-   lista_jsons = [ x.json() for x in listaLocal ] 
-   resposta = jsonify(lista_jsons) 
-   resposta.headers.add("Access-Control-Allow-Origin", "*") 
-   return resposta
+@app.route("/listaLocal/<int:Produtoid>") 
+def listaLocal(Produtoid): 
+    Local = db.session.query(Localnaloja).filter(Localnaloja.Produto_id == Produtoid).first()
+    resposta = jsonify(Local.json()) 
+    resposta.headers.add("Access-Control-Allow-Origin", "*") 
+    return resposta
 
 app.run(debug=True)
 
