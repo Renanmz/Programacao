@@ -60,9 +60,12 @@ if __name__ == "__main__":
 
     p3 = Produto(nome = "lapis", preco = "1.50", peso = "5g", barra = "7897")
 
+    p4 = Produto(nome = "iogurte", preco = "4.50", peso = "75g", barra = "6497")
+
     db.session.add(p1)
     db.session.add(p2)
     db.session.add(p3)
+    db.session.add(p4)
     db.session.commit()
 
     todas = db.session.query(Produto).all()
@@ -71,16 +74,18 @@ if __name__ == "__main__":
         print(p)
         print(p.json())
     
-    l1 = Localnaloja(setor = "escola", posicao = "5", andar = "3", Produto = p1)
-    l2 = Localnaloja(setor = "sede", posicao = "4", andar = "3", Produto = p2)
-    l3 = Localnaloja(setor = "filial", posicao = "5", andar = "4", Produto = p3)
+    l1 = Localnaloja(setor = "papelaria", posicao = "5", andar = "3", Produto = p1)
+    l2 = Localnaloja(setor = "papelaria", posicao = "4", andar = "3", Produto = p2)
+    l3 = Localnaloja(setor = "papelaria", posicao = "5", andar = "4", Produto = p3)
+    l4 = Localnaloja(setor = "frios", posicao = "7", andar = "2", Produto = p4)
 
     
     db.session.add(l1)
     db.session.add(l2)
     db.session.add(l3)
+    db.session.add(l4)
 
     db.session.commit()
 
-    print(f"Local na loja : {l1}") 
-    print(f"Local na loja em json: {l1.json()}")
+    print(f"Local na loja : {l4}") 
+    print(f"Local na loja em json: {l4.json()}")

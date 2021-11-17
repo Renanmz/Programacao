@@ -1,7 +1,7 @@
 $(function () {
     function exibir_Produtos() {
         $.ajax({
-            url: 'http://localhost:5000/lista',
+            url: 'http://localhost:5000/lista/Produto',
             method: 'GET',
             dataType: 'json',
             success: lista,
@@ -52,7 +52,7 @@ $(function () {
 
     $(document).on("click", "#IncluirProduto", function () {
         nome = $("#campoNome").val();
-        preco = $("#campoPreço").val();
+        preco = $("#campoPreco").val();
         peso = $("#campoPeso").val();
         barra = $("#campoBarra").val();
         var dados = JSON.stringify({ nome: nome, preco: preco, peso: peso, barra: barra });
@@ -201,6 +201,30 @@ $(function () {
     function erroAoLocalizar(retorno){
         alert("ERRO: " + retorno.resultado + ":" + retorno.detalhes);
     }
+
+
+    $(document).on("click", "#IncluirProduto", function carregarCombo() { 
+        $.ajax({ 
+            url: "http://localhost:5000/lista/", 
+            method: GET, 
+            dataType: json, 
+            success: carregar, 
+            error: function(problema) { 
+                alert("erro ao ler dados, verifique o backend: "); 
+                 } 
+        });
+    })
+    function carregar (dados) { 
+        $("#"+LocalId).empty();
+        dados = [frios, papelaria, acougue, massas, padaria] 
+        for (var i in dados) { 
+            $("#"+LocalId).append( 
+            $("<option></option>").attr("value", 
+            dados[i].id).text(dados[i].nome)); 
+         } 
+      } 
 });
+
+
 
 //<p>Editar</p>

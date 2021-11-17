@@ -14,7 +14,7 @@ def incluir():
     dados = request.get_json()
     try:
         nova = Produto(**dados)
-        db.session.add(nova)
+        db.session.add(nova)               
         db.session.commit()
     except Exception as e:
         resposta = jsonify({"resultado": "erro", "detalhes": str(e)})
@@ -22,11 +22,14 @@ def incluir():
     return resposta
 
 
-@app.route("/lista")
-def lista():
-    produtos = db.session.query(Produto).all()
+@app.route("/lista/<string:Class>")
+def lista(Class):
+    if Class == "Produto":
+        classe = db.session.query(Produto).all()
+    elif Class == "Local":
+        classe = db.session.query(Localnaloja).all()
     retorno = []
-    for p in produtos:
+    for p in classe:
         retorno.append(p.json())
     resposta = jsonify(retorno)
     resposta.headers.add("Access-Control-Allow-Origin", "*")
