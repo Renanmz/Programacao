@@ -150,27 +150,32 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
+                                <label for="campoId3">Posição na Tabela</label>
+                                <input type="text" class="form-control" id="campoId3" readonly>
+                            </div>
+                            <div class="form-group">
                                 <label for="campoSetor">Setor</label>
                                 <input type="text" class="form-control" id="campoSetor" aria-describedby="SetorHelp"
-                                    placeholder="Setor" readonly>
+                                    placeholder="Setor" >
                                 <small id="SetorHelp" class="form-text text-muted">O Setor onde o produto se encontra.</small>
                             </div>
                             <div class="form-group">
                                 <label for="campoPosicao">Posicao</label>
                                 <input type="text" class="form-control" id="campoPosicao" aria-describedby="PosicaoHelp"
-                                    placeholder="Posicao" readonly>
+                                    placeholder="Posicao" >
                                 <small id="PosicaoHelp" class="form-text text-muted">O Posicao do produto no Setor.</small>
                             </div>
                             <div class="form-group">
                                 <label for="campoAndar">Andar</label>
                                 <input type="text" class="form-control" id="campoAndar" aria-describedby="AndarHelp"
-                                    placeholder="Andar" readonly>
+                                    placeholder="Andar" >
                                 <small id="AndarHelp" class="form-text text-muted">O Andar do produto no Setor.</small>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                        <button id="AlterarLocal" type="button" class="btn btn-primary">Alterar</button>
                     </div>
                 </div>
             </div>

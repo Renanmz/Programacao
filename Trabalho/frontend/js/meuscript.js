@@ -193,6 +193,7 @@ $(function () {
     })
     function LocalizarProduto(retorno){
         $('#modalEncontrar').modal('show');
+        $("#campoId3").val(retorno['id']);
         $("#campoSetor").val(retorno['setor']);
         $("#campoPosicao").val(retorno['posicao']);
         $("#campoAndar").val(retorno['andar']);
@@ -203,28 +204,42 @@ $(function () {
     }
 
 
-    $(document).on("click", "#IncluirProduto", function carregarCombo() { 
-        $.ajax({ 
-            url: "http://localhost:5000/lista/", 
-            method: GET, 
-            dataType: json, 
-            success: carregar, 
-            error: function(problema) { 
-                alert("erro ao ler dados, verifique o backend: "); 
-                 } 
+    $(document).on("click", "#AlterarLocal", function () {
+        id = $('#campoId3').val();
+        setor = $('#campoSetor').val();
+        posicao = $("#campoPosicao").val();
+        andar = $("#campoAndar").val();
+        var dados = JSON.stringify({ setor: setor, posicao: posicao, andar: andar});
+        $.ajax({
+            url: 'http://localhost:5000/AlterarLocal',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: dados,
+            success: AlteraçãoLocalFeita,
+            error: erroAoAlterarLocal
         });
+        
     })
-    function carregar (dados) { 
-        $("#"+LocalId).empty();
-        dados = [frios, papelaria, acougue, massas, padaria] 
-        for (var i in dados) { 
-            $("#"+LocalId).append( 
-            $("<option></option>").attr("value", 
-            dados[i].id).text(dados[i].nome)); 
-         } 
-      } 
-});
+    function AlteraçãoLocalFeita(retorno) {
+        mostrar_conteudo("conteudoInicial");
+        if (retorno.resultado == "ok") {
+            //alert("Produto alterado com sucesso!");
+            $("#campoId3").val("");
+            $("#campoSetor").val("");
+            $("#campoPosicao").val("");
+            $("#campoAndar").val("");
+        } else {
+            alert(retorno.resultado + ":" + retorno.detalhes);
+        }
+    }
+    function erroAoAlterarLocal(retorno) {
+        alert("ERRO: " + retorno.resultado + ":" + retorno.detalhes);
+    }
+    $('#modalAlterarLocal').on('hide.bs.modal', function (e) {
+        if (!$("#TabelaProduto").hasClass("d-none")) {
+            exibir_pessoas();
+        }
+    });
 
-
-
-//<p>Editar</p>
+})

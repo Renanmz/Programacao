@@ -79,6 +79,22 @@ def listaLocal(Produtoid):
     resposta.headers.add("Access-Control-Allow-Origin", "*") 
     return resposta
 
+@app.route("/AlterarLocal", methods=['post'])
+def alterar_local():
+    resposta = jsonify({"resultado": "ok", "detalhes": "ok"})
+    dados = request.get_json()
+    Localid = dados['id']
+    l = db.session.query(Localnaloja).filter(Localnaloja.Produto_id == Localid).first()
+    try:
+        l.setor = dados['setor']
+        l.posicao = dados['posicao']
+        l.andar = dados['andar']
+        db.session.commit()
+    except Exception as e:
+        resposta = jsonify({"resultado": "erro", "detalhes": str(e)})
+    resposta.headers.add("Access-Control-Allow-Origin", "*")   
+    return resposta
+
 app.run(debug=True)
 
 
