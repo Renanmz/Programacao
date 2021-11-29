@@ -167,6 +167,7 @@ $(function () {
             $("#campoPreco2").val("");
             $("#campoPeso2").val("");
             $("#campoBarra2").val("");
+            exibir_Produtos();
         } else {
             alert(retorno.resultado + ":" + retorno.detalhes);
         }
@@ -176,7 +177,7 @@ $(function () {
     }
     $('#modalAlterarProdutos').on('hide.bs.modal', function (e) {
         if (!$("#TabelaProduto").hasClass("d-none")) {
-            exibir_pessoas();
+            exibir_Produtos();
         }
     });
     $(document).on("click", ".EncontrarProduto", function () {
@@ -205,11 +206,11 @@ $(function () {
 
 
     $(document).on("click", "#AlterarLocal", function () {
-        id = $('#campoId3').val();
-        setor = $('#campoSetor').val();
-        posicao = $("#campoPosicao").val();
-        andar = $("#campoAndar").val();
-        var dados = JSON.stringify({ setor: setor, posicao: posicao, andar: andar});
+        id = $("#campoId33").val();
+        setor = $("#campoSetor3").val();
+        posicao = $("#campoPosicao3").val();
+        andar = $("#campoAndar3").val();
+        var dados = JSON.stringify({ setor: setor, posicao: posicao, andar: andar, id: id});
         $.ajax({
             url: 'http://localhost:5000/AlterarLocal',
             type: 'POST',
@@ -226,9 +227,10 @@ $(function () {
         if (retorno.resultado == "ok") {
             //alert("Produto alterado com sucesso!");
             $("#campoId3").val("");
-            $("#campoSetor").val("");
-            $("#campoPosicao").val("");
-            $("#campoAndar").val("");
+            $("#campoSetor3").val("");
+            $("#campoPosicao3").val("");
+            $("#campoAndar3").val("");
+            exibir_Produtos();
         } else {
             alert(retorno.resultado + ":" + retorno.detalhes);
         }
@@ -238,7 +240,7 @@ $(function () {
     }
     $('#modalAlterarLocal').on('hide.bs.modal', function (e) {
         if (!$("#TabelaProduto").hasClass("d-none")) {
-            exibir_pessoas();
+            exibir_Produtos();
         }
     });
 
