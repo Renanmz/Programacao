@@ -82,8 +82,42 @@ $(function () {
     function erroAoIncluir(retorno) {
         alert("ERRO: " + retorno.resultado + ":" + retorno.detalhes);
     }
+    //Local
+    $(document).on("click", "#IncluirLocal", function () {
+        id = $('#campoId4').val();
+        setor = $('#campoSetor').val();
+        posicao = $("#campoPosicao").val();
+        andar = $("#campoAndar").val();
+        Produto_id = $("#campoProdutoId").val();
+        var dados = JSON.stringify({ setor: setor, posicao: posicao, andar: andar, id: id, Produto_id: Produto_id});
+        $.ajax({
+            url: 'http://localhost:5000/incluirLocal',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: dados,
+            success: LocalIncluido,
+            error: erroAoIncluirLocal
+        });
+    })
 
-    $('#modalIncluirProdutos').on('hide.bs.modal', function (e) {
+    function LocalIncluido(retorno) {
+        mostrar_conteudo("conteudoInicial");
+        if (retorno.resultado == "ok") {
+            //alert("Produto incluída com sucesso!");
+            $("#campoId").val("");
+            $("#campoSetor").val("");
+            $("#campoPosicao").val("");
+            $("#campoAndar").val("");
+            $("#campoProdutoId").val("");
+        } else {
+            alert(retorno.resultado + ":" + retorno.detalhes);
+        }
+    }
+    function erroAoIncluirLocal(retorno) {
+        alert("ERRO: " + retorno.resultado + ":" + retorno.detalhes);
+    }
+    $('#modalIncluirLocal').on('hide.bs.modal', function (e) {
         if (!$("#TabelaProduto").hasClass("d-none")) {
             exibir_Produtos();
         }
@@ -195,9 +229,9 @@ $(function () {
     function LocalizarProduto(retorno){
         $('#modalEncontrar').modal('show');
         $("#campoId3").val(retorno['id']);
-        $("#campoSetor").val(retorno['setor']);
-        $("#campoPosicao").val(retorno['posicao']);
-        $("#campoAndar").val(retorno['andar']);
+        $("#campoSetor2").val(retorno['setor']);
+        $("#campoPosicao2").val(retorno['posicao']);
+        $("#campoAndar2").val(retorno['andar']);
 
     }
     function erroAoLocalizar(retorno){
@@ -206,10 +240,10 @@ $(function () {
 
 
     $(document).on("click", "#AlterarLocal", function () {
-        id = $("#campoId33").val();
-        setor = $("#campoSetor3").val();
-        posicao = $("#campoPosicao3").val();
-        andar = $("#campoAndar3").val();
+        id = $('#campoId3').val();
+        setor = $('#campoSetor2').val();
+        posicao = $("#campoPosicao2").val();
+        andar = $("#campoAndar2").val();
         var dados = JSON.stringify({ setor: setor, posicao: posicao, andar: andar, id: id});
         $.ajax({
             url: 'http://localhost:5000/AlterarLocal',
@@ -227,9 +261,9 @@ $(function () {
         if (retorno.resultado == "ok") {
             //alert("Produto alterado com sucesso!");
             $("#campoId3").val("");
-            $("#campoSetor3").val("");
-            $("#campoPosicao3").val("");
-            $("#campoAndar3").val("");
+            $("#campoSetor2").val("");
+            $("#campoPosicao2").val("");
+            $("#campoAndar2").val("");
             exibir_Produtos();
         } else {
             alert(retorno.resultado + ":" + retorno.detalhes);

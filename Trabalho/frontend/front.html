@@ -21,6 +21,7 @@
                         <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="#" id="linkLista">Listar</a>
                     <a class="nav-item nav-link" data-toggle="modal" data-target="#modalIncluir" href="#">Incluir</a>
+                    <a class="nav-item nav-link" data-toggle="modal" data-target="#modalLocal" href="#">Incluir Local</a>
                 </div>
             </div>
 
@@ -78,6 +79,56 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button id="IncluirProduto" type="button" class="btn btn-primary">Incluir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--form Local-->
+        <div class="modal fade" id="modalLocal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Incluir Produtos</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="campoId4">Posição na Tabela</label>
+                                <input type="text" class="form-control" id="campoId4">
+                            </div>
+                            <div class="form-group">
+                                <label for="campoSetor">Setor</label>
+                                <input type="text" class="form-control" id="campoSetor" aria-describedby="SetorHelp"
+                                    placeholder="Setor" >
+                                <small id="SetorHelp" class="form-text text-muted">O Setor onde o produto se encontra.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="campoPosicao">Posicao</label>
+                                <input type="text" class="form-control" id="campoPosicao" aria-describedby="PosicaoHelp"
+                                    placeholder="Posicao" >
+                                <small id="PosicaoHelp" class="form-text text-muted">O Posicao do produto no Setor.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="campoAndar">Andar</label>
+                                <input type="text" class="form-control" id="campoAndar" aria-describedby="AndarHelp"
+                                    placeholder="Andar" >
+                                <small id="AndarHelp" class="form-text text-muted">O Andar do produto no Setor.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="campoProdutoId">Andar</label>
+                                <input type="text" class="form-control" id="campoProdutoId" aria-describedby="ProdutoIdHelp"
+                                    placeholder="ProdutoId" >
+                                <small id="ProdutoIdHelp" class="form-text text-muted">O Andar do produto no Setor.</small>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button id="IncluirLocal" type="button" class="btn btn-primary">Incluir</button>
                     </div>
                 </div>
             </div>
@@ -149,20 +200,20 @@
                                 <input type="text" class="form-control" id="campoId3" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="campoSetor3">Setor</label>
-                                <input type="text" class="form-control" id="campoSetor3" aria-describedby="SetorHelp"
+                                <label for="campoSetor2">Setor</label>
+                                <input type="text" class="form-control" id="campoSetor2" aria-describedby="SetorHelp"
                                     placeholder="Setor" >
                                 <small id="SetorHelp" class="form-text text-muted">O Setor onde o produto se encontra.</small>
                             </div>
                             <div class="form-group">
-                                <label for="campoPosicao3">Posicao</label>
-                                <input type="text" class="form-control" id="campoPosicao3" aria-describedby="PosicaoHelp"
+                                <label for="campoPosicao2">Posicao</label>
+                                <input type="text" class="form-control" id="campoPosicao2" aria-describedby="PosicaoHelp"
                                     placeholder="Posicao" >
                                 <small id="PosicaoHelp" class="form-text text-muted">O Posicao do produto no Setor.</small>
                             </div>
                             <div class="form-group">
-                                <label for="campoAndar3">Andar</label>
-                                <input type="text" class="form-control" id="campoAndar3" aria-describedby="AndarHelp"
+                                <label for="campoAndar2">Andar</label>
+                                <input type="text" class="form-control" id="campoAndar2" aria-describedby="AndarHelp"
                                     placeholder="Andar" >
                                 <small id="AndarHelp" class="form-text text-muted">O Andar do produto no Setor.</small>
                             </div>

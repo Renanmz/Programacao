@@ -21,6 +21,20 @@ def incluir():
     resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta
 
+@app.route("/incluirLocal", methods=['post'])
+def incluirLocal():
+    resposta = jsonify({"resultado": "ok", "detalhes": "ok"})
+
+    dados = request.get_json()
+    try:
+        nova = Localnaloja(**dados)
+        db.session.add(nova)               
+        db.session.commit()
+    except Exception as e:
+        resposta = jsonify({"resultado": "erro", "detalhes": str(e)})
+    resposta.headers.add("Access-Control-Allow-Origin", "*")
+    return resposta
+
 
 @app.route("/lista/<string:Class>")
 def lista(Class):
@@ -66,6 +80,7 @@ def alterar_produto():
         p.preco = dados['preco']
         p.peso = dados['peso']
         p.barra = dados['barra']
+
         db.session.commit()
     except Exception as e:
         resposta = jsonify({"resultado": "erro", "detalhes": str(e)})
