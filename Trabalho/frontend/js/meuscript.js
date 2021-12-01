@@ -289,33 +289,33 @@ $(function() {
         }
     });
 
-    function carregarCombo(combo_id, nome_classe) {
-        $.ajax({
-            url: 'http://localhost:5000/lista/' + nome_classe,
-            method: 'GET',
-            dataType: 'json',
-            success: carregar,
-            error: function(problema) {
-                alert("erro ao ler dados, verifique o backend: ");
-            }
-        });
+    //function carregarCombo(combo_id, nome_classe) {
+    //$.ajax({
+    //url: 'http://localhost:5000/lista/' + nome_classe,
+    //method: 'GET',
+    //dataType: 'json',
+    //success: carregar,
+    //error: function(problema) {
+    //alert("erro ao ler dados, verifique o backend: ");
+    //}
+    //});
 
-        function carregar(dados) {
-            $('#' + combo_id).empty();
-            $('#loading_' + combo_id).removeClass('d-none');
-            for (var i in dados) {
-                $('#' + combo_id).append(
-                    $('<option></option>').attr("value",
-                        dados[i].id).text(dados[i].setor));
-            }
-            setTimeout(() => {
-                $('#loading_' + combo_id).addClass('d-none');
-            }, 1000);
-        }
-    }
-    $('#modalIncluirLocal').on('shown.bs.modal', function(e) {
-        // carregar as listas de pessoas e exames
-        carregarCombo("campoSetorId", "Localnaloja");
-    });
+    //function carregar(dados) {
+    //$('#' + combo_id).empty();
+    //$('#loading_' + combo_id).removeClass('d-none');
+    //for (var i in dados) {
+    //$('#' + combo_id).append(
+    //$('<option></option>').attr("value",
+    //dados[i].id).text(dados[i].setor));
+    //}
+    //setTimeout(() => {
+    //$('#loading_' + combo_id).addClass('d-none');
+    //}, 1000);
+    //}
+    //}
+    //$('#modalIncluirLocal').on('shown.bs.modal', function(e) {
+    // carregar as listas de pessoas e exames
+    //    carregarCombo("campoSetorId", "Localnaloja");
+    //});
 
 });
