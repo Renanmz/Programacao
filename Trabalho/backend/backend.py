@@ -40,7 +40,7 @@ def incluirLocal():
 def lista(Class):
     if Class == "Produto":
         classe = db.session.query(Produto).all()
-    elif Class == "Local":
+    elif Class == "Localnaloja":
         classe = db.session.query(Localnaloja).all()
     retorno = []
     for p in classe:

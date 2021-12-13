@@ -1,11 +1,11 @@
-$(function() {
+$(function () {
     function exibir_Produtos() {
         $.ajax({
             url: 'http://localhost:5000/lista/Produto',
             method: 'GET',
             dataType: 'json',
             success: lista,
-            error: function() {
+            error: function () {
                 alert("erro ao ler dados, verifique o backend");
             }
         });
@@ -43,16 +43,16 @@ $(function() {
     }
 
 
-    $(document).on("click", "#linkLista", function() {
+    $(document).on("click", "#linkLista", function () {
         exibir_Produtos();
     });
 
-    $(document).on("click", "#linkInicio", function() {
+    $(document).on("click", "#linkInicio", function () {
         mostrar_conteudo("conteudoInicial");
     });
 
 
-    $(document).on("click", "#IncluirProduto", function() {
+    $(document).on("click", "#IncluirProduto", function () {
         nome = $("#campoNome").val();
         preco = $("#campoPreco").val();
         peso = $("#campoPeso").val();
@@ -77,6 +77,12 @@ $(function() {
             $("#campoPreco").val("");
             $("#campoPeso").val("");
             $("#campoBarra").val("");
+            inclui2();
+
+
+
+
+
         } else {
             alert(retorno.resultado + ":" + retorno.detalhes);
         }
@@ -86,7 +92,7 @@ $(function() {
         alert("ERRO: " + retorno.resultado + ":" + retorno.detalhes);
     }
     //Local
-    $(document).on("click", "#IncluirLocal", function() {
+    $(document).on("click", "#IncluirLocal", function () {
         id = $('#campoId4').val();
         setor = $('#campoSetor').val();
         posicao = $("#campoPosicao").val();
@@ -103,6 +109,23 @@ $(function() {
             error: erroAoIncluirLocal
         });
     })
+    function inclui2() {
+        id = $('#campoId4').val();
+        setor = $('#campoSetor').val();
+        posicao = $("#campoPosicao").val();
+        andar = $("#campoAndar").val();
+        Produto_id = $("#campoProdutoId").val();
+        var dados = JSON.stringify({ setor: setor, posicao: posicao, andar: andar, id: id, Produto_id: Produto_id });
+        $.ajax({
+            url: 'http://localhost:5000/incluirLocal',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: dados,
+            success: LocalIncluido,
+            error: erroAoIncluirLocal
+        });
+    }
 
     function LocalIncluido(retorno) {
         mostrar_conteudo("conteudoInicial");
@@ -121,14 +144,14 @@ $(function() {
     function erroAoIncluirLocal(retorno) {
         alert("ERRO: " + retorno.resultado + ":" + retorno.detalhes);
     }
-    $('#modalIncluirLocal').on('hide.bs.modal', function(e) {
+    $('#modalIncluirLocal').on('hide.bs.modal', function (e) {
         if (!$("#TabelaProduto").hasClass("d-none")) {
             exibir_Produtos();
         }
     });
     mostrar_conteudo("conteudoInicial");
 
-    $(document).on("click", ".ExcluirProduto", function() {
+    $(document).on("click", ".ExcluirProduto", function () {
         var componente_clicado = $(this).attr('id');
         var nome_icone = "Excluir";
         var id_Produto = componente_clicado.substring(nome_icone.length);
@@ -142,7 +165,7 @@ $(function() {
 
         function ProdutoExcluido(retorno) {
             if (retorno.resultado == "ok") {
-                $("#linha_" + id_Produto).fadeOut(500, function() {
+                $("#linha_" + id_Produto).fadeOut(500, function () {
                     //alert("Produto removido com sucesso!");
                 });
             } else {
@@ -154,7 +177,7 @@ $(function() {
             alert("erro ao excluir dados, verifique o backend: ");
         }
     })
-    $(document).on("click", ".EditarProduto", function() {
+    $(document).on("click", ".EditarProduto", function () {
         var componente_clicado = $(this).attr('id');
         var nome_icone = "Editar";
         var id_Produto = componente_clicado.substring(nome_icone.length);
@@ -179,7 +202,7 @@ $(function() {
     function erroAoEditar(retorno) {
         alert("ERRO: " + retorno.resultado + ":" + retorno.detalhes);
     }
-    $(document).on("click", "#AlterarProduto", function() {
+    $(document).on("click", "#AlterarProduto", function () {
         id = $('#campoId2').val();
         nome = $("#campoNome2").val();
         preco = $("#campoPreco2").val();
@@ -216,12 +239,12 @@ $(function() {
     function erroAoAlterar(retorno) {
         alert("ERRO: " + retorno.resultado + ":" + retorno.detalhes);
     }
-    $('#modalAlterarProdutos').on('hide.bs.modal', function(e) {
+    $('#modalAlterarProdutos').on('hide.bs.modal', function (e) {
         if (!$("#TabelaProduto").hasClass("d-none")) {
             exibir_Produtos();
         }
     });
-    $(document).on("click", ".EncontrarProduto", function() {
+    $(document).on("click", ".EncontrarProduto", function () {
         var componente_clicado = $(this).attr('id');
         var nome_icone = "Localizar";
         var id_Produto = componente_clicado.substring(nome_icone.length);
@@ -248,7 +271,7 @@ $(function() {
     }
 
 
-    $(document).on("click", "#AlterarLocal", function() {
+    $(document).on("click", "#AlterarLocal", function () {
         id = $('#campoId3').val();
         setor = $('#campoSetor2').val();
         posicao = $("#campoPosicao2").val();
@@ -283,39 +306,67 @@ $(function() {
     function erroAoAlterarLocal(retorno) {
         alert("ERRO: " + retorno.resultado + ":" + retorno.detalhes);
     }
-    $('#modalAlterarLocal').on('hide.bs.modal', function(e) {
+    $('#modalAlterarLocal').on('hide.bs.modal', function (e) {
         if (!$("#TabelaProduto").hasClass("d-none")) {
             exibir_Produtos();
         }
     });
 
-    //function carregarCombo(combo_id, nome_classe) {
-    //$.ajax({
-    //url: 'http://localhost:5000/lista/' + nome_classe,
-    //method: 'GET',
-    //dataType: 'json',
-    //success: carregar,
-    //error: function(problema) {
-    //alert("erro ao ler dados, verifique o backend: ");
-    //}
-    //});
+    function carregarCombo(combo_id, nome_classe) {
+        $.ajax({
+            url: 'http://localhost:5000/lista/' + nome_classe,
+            method: 'GET',
+            dataType: 'json',
+            success: carregar,
+            error: function (problema) {
+                alert("erro ao ler dados, verifique o backend: ");
+            }
+        });
 
-    //function carregar(dados) {
-    //$('#' + combo_id).empty();
-    //$('#loading_' + combo_id).removeClass('d-none');
-    //for (var i in dados) {
-    //$('#' + combo_id).append(
-    //$('<option></option>').attr("value",
-    //dados[i].id).text(dados[i].setor));
-    //}
-    //setTimeout(() => {
-    //$('#loading_' + combo_id).addClass('d-none');
-    //}, 1000);
-    //}
-    //}
-    //$('#modalIncluirLocal').on('shown.bs.modal', function(e) {
-    // carregar as listas de pessoas e exames
-    //    carregarCombo("campoSetorId", "Localnaloja");
-    //});
+        function carregar() {
+            $('#' + combo_id).empty();
+            $('#loading_' + combo_id).removeClass('d-none');
+            var i = 0
+            var dados = ['']
+            if (combo_id == "campoSetorId") {
+                dados = ['']
+                i = 0
+                dados = ["papelaria", "frios", "bebidas", "frutas", "vegetais", "padaria", "acougue"]
+                for (i in dados) {
+                    $('#' + combo_id).append(
+                        $('<option></option>').attr("value",
+                            dados[i]).text(dados[i]));
+                }
+            }
+            if (combo_id == "campoPosicaoId") {
+                dados = ['']
+                i = 0
+                dados = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",]
+                for (i in dados) {
+                    $('#' + combo_id).append(
+                        $('<option></option>').attr("value",
+                            dados[i]).text(dados[i]));
+                }
+            }
+            if (combo_id == "campoAndarId") {
+                dados = ['']
+                i = 0
+                dados = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",]
+                for (i in dados) {
+                    $('#' + combo_id).append(
+                        $('<option></option>').attr("value",
+                            dados[i]).text(dados[i]));
+                }
+            }
+            setTimeout(() => {
+                $('#loading_' + combo_id).addClass('d-none');
+            }, 1000);
+        }
+    }
+    $('#modalIncluir').on('shown.bs.modal', function (e) {
+        carregarCombo("campoSetorId", "Localnaloja");
+        carregarCombo("campoPosicaoId", "Localnaloja");
+        carregarCombo("campoAndarId", "Localnaloja");
+    });
 
 });

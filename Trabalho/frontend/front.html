@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Cadastro de Produtos</title>
 </head>
@@ -20,7 +21,8 @@
                         <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="#" id="linkLista">Listar</a>
                     <a class="nav-item nav-link" data-toggle="modal" data-target="#modalIncluir" href="#">Incluir</a>
-                    <a class="nav-item nav-link" data-toggle="modal" data-target="#modalLocal" href="#">Incluir Local</a>
+                    <a class="nav-item nav-link" data-toggle="modal" data-target="#modalLocal" href="#">Incluir
+                        Local</a>
                 </div>
             </div>
 
@@ -34,7 +36,8 @@
         </div>
 
 
-        <div class="modal fade" id="modalIncluir" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalIncluir" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -47,32 +50,49 @@
                         <form>
                             <div class="form-group">
                                 <label for="campoNome">Nome</label>
-                                <input type="text" class="form-control" id="campoNome" aria-describedby="nomeHelp" placeholder="Nome">
+                                <input type="text" class="form-control" id="campoNome" aria-describedby="nomeHelp"
+                                    placeholder="Nome">
                                 <small id="nomeHelp" class="form-text text-muted">Informe nome do produto que desejas
                                     cadastrar.</small>
                             </div>
                             <div class="form-group">
                                 <label for="campoPreco">Preço</label>
-                                <input type="text" class="form-control" id="campoPreco" aria-describedby="PreçoHelp" placeholder="Preço">
+                                <input type="text" class="form-control" id="campoPreco" aria-describedby="PreçoHelp"
+                                    placeholder="Preço">
                                 <small id="PreçoHelp" class="form-text text-muted">Seu preco inteiro sem
                                     descontos.</small>
                             </div>
                             <div class="form-group">
                                 <label for="campoPeso">Peso</label>
-                                <input type="text" class="form-control" id="campoPeso" aria-describedby="PesoHelp" placeholder="Peso">
+                                <input type="text" class="form-control" id="campoPeso" aria-describedby="PesoHelp"
+                                    placeholder="Peso">
                                 <small id="PesoHelp" class="form-text text-muted">O peso do produto em questao.</small>
                             </div>
                             <div class="form-group">
                                 <label for="campoBarra">Barra</label>
-                                <input type="text" class="form-control" id="campoBarra" aria-describedby="BarraHelp" placeholder="Barra">
+                                <input type="text" class="form-control" id="campoBarra" aria-describedby="BarraHelp"
+                                    placeholder="Barra">
                                 <small id="BarraHelp" class="form-text text-muted">O código de barra completo do
                                     Produto.</small>
                             </div>
-                            <!--<div class="form-group">
+                            <div class="form-group">
                                 <label for="campoSetorId">Setor</label>
-                                <select class="form-control" id="campoSetorId" aria-describedby="SetorIdHelp" placeholder="SetorId">
+                                <select class="form-control" id="campoSetorId" aria-describedby="SetorIdHelp"
+                                    placeholder="SetorId">
                                 </select>
-                            </div>-->
+                            </div>
+                            <div class="form-group">
+                                <label for="campoPosicaoId">Posicao</label>
+                                <select class="form-control" id="campoPosicaoId" aria-describedby="PosicaoIdHelp"
+                                    placeholder="PosicaoId">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="campoAndarId">Andar</label>
+                                <select class="form-control" id="campoAndarId" aria-describedby="AndarIdHelp"
+                                    placeholder="AndarId">
+                                </select>
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -84,11 +104,12 @@
         </div>
 
         <!--form Local-->
-        <div class="modal fade" id="modalLocal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalLocal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Incluir Produtos</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Incluir Local nos Produtos</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -101,23 +122,59 @@
                             </div>
                             <div class="form-group">
                                 <label for="campoSetor">Setor</label>
-                                <input type="text" class="form-control" id="campoSetor" aria-describedby="SetorHelp" placeholder="Setor">
-                                <small id="SetorHelp" class="form-text text-muted">O Setor onde o produto se encontra.</small>
+                                <select class="form-control" id="campoSetor" aria-describedby="SetorHelp">
+                                    <option>papelaria</option>
+                                    <option>frios</option>
+                                    <option>bebidas</option>
+                                    <option>frutas</option>
+                                    <option>vegetais</option>
+                                    <option>padaria</option>
+                                    <option>acougue</option>
+                                </select>
+                                <small id="SetorHelp" class="form-text text-muted">O Setor onde o produto se
+                                    encontra.</small>
                             </div>
                             <div class="form-group">
                                 <label for="campoPosicao">Posicao</label>
-                                <input type="text" class="form-control" id="campoPosicao" aria-describedby="PosicaoHelp" placeholder="Posicao">
-                                <small id="PosicaoHelp" class="form-text text-muted">O Posicao do produto no Setor.</small>
+                                <select class="form-control" id="campoPosicao" aria-describedby="PosicaoHelp">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                </select>
+                                
+                                <small id="PosicaoHelp" class="form-text text-muted">O Posicao do produto no
+                                        Setor.</small>
                             </div>
                             <div class="form-group">
                                 <label for="campoAndar">Andar</label>
-                                <input type="text" class="form-control" id="campoAndar" aria-describedby="AndarHelp" placeholder="Andar">
+                                <select class="form-control" id="campoAndar" aria-describedby="AndarHelp">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                </select>
+
                                 <small id="AndarHelp" class="form-text text-muted">O Andar do produto no Setor.</small>
                             </div>
                             <div class="form-group">
-                                <label for="campoProdutoId">Andar</label>
-                                <input type="text" class="form-control" id="campoProdutoId" aria-describedby="ProdutoIdHelp" placeholder="ProdutoId">
-                                <small id="ProdutoIdHelp" class="form-text text-muted">O Andar do produto no Setor.</small>
+                                <label for="campoProdutoId">Produto</label>
+                                <input type="text" class="form-control" id="campoProdutoId"
+                                    aria-describedby="ProdutoIdHelp" placeholder="ProdutoId">
+                                <small id="ProdutoIdHelp" class="form-text text-muted">O Andar do produto no
+                                    Setor.</small>
                             </div>
                         </form>
                     </div>
@@ -130,7 +187,8 @@
         </div>
 
         <!--form Editar-->
-        <div class="modal fade" id="modalEditar" tabindex="0" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal fade" id="modalEditar" tabindex="0" role="dialog" aria-labelledby="exampleModalLabel2"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -169,88 +227,92 @@
                                     Produto.</small>
                             </div>
                         </form>
-                        <div class="form-group">
-                            <label for="campoSetorId">Setor</label>
-                            <select class="form-control" id="campoSetorId" aria-describedby="SetorIdHelp" placeholder="SetorId">
-                        <!-- opções serão preenchidas via javscript -->
-                        </select> /div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                <button id="AlterarProduto" type="button" class="btn btn-primary">Alterar</button>
-                            </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button id="AlterarProduto" type="button" class="btn btn-primary">Alterar</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--Form Encontrar-->
-        <div class="modal fade" id="modalEncontrar" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel3">Encontrar Produto</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="campoId3">Posição na Tabela</label>
-                                <input type="text" class="form-control" id="campoId3" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="campoSetor2">Setor</label>
-                                <input type="text" class="form-control" id="campoSetor2" aria-describedby="SetorHelp" placeholder="Setor">
-                                <small id="SetorHelp" class="form-text text-muted">O Setor onde o produto se encontra.</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="campoPosicao2">Posicao</label>
-                                <input type="text" class="form-control" id="campoPosicao2" aria-describedby="PosicaoHelp" placeholder="Posicao">
-                                <small id="PosicaoHelp" class="form-text text-muted">O Posicao do produto no Setor.</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="campoAndar2">Andar</label>
-                                <input type="text" class="form-control" id="campoAndar2" aria-describedby="AndarHelp" placeholder="Andar">
-                                <small id="AndarHelp" class="form-text text-muted">O Andar do produto no Setor.</small>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
-                        <button id="AlterarLocal" type="button" class="btn btn-primary">Alterar</button>
-                    </div>
+    </div>
+    <!--Form Encontrar-->
+    <div class="modal fade" id="modalEncontrar" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel3"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel3">Encontrar Produto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="campoId3">Posição na Tabela</label>
+                            <input type="text" class="form-control" id="campoId3" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="campoSetor2">Setor</label>
+                            <input type="text" class="form-control" id="campoSetor2" aria-describedby="SetorHelp"
+                                placeholder="Setor">
+                            <small id="SetorHelp" class="form-text text-muted">O Setor onde o produto se
+                                encontra.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="campoPosicao2">Posicao</label>
+                            <input type="text" class="form-control" id="campoPosicao2" aria-describedby="PosicaoHelp"
+                                placeholder="Posicao">
+                            <small id="PosicaoHelp" class="form-text text-muted">O Posicao do produto no Setor.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="campoAndar2">Andar</label>
+                            <input type="text" class="form-control" id="campoAndar2" aria-describedby="AndarHelp"
+                                placeholder="Andar">
+                            <small id="AndarHelp" class="form-text text-muted">O Andar do produto no Setor.</small>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                    <button id="AlterarLocal" type="button" class="btn btn-primary">Alterar</button>
+                </div>
             </div>
 
         </div>
 
+    </div>
 
 
 
 
-        <div class="container">
-            <table class="table table-striped table-hover" id="TabelaProduto">
-                <thead>
-                    <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Preco</th>
-                        <th scope="col">Peso</th>
-                        <th scope="col">Barra</th>
-                        <th scope="col">Excluir</th>
-                        <th scope="col">Editar</th>
-                        <th scope="col">Local</th>
-                    </tr>
-                </thead>
-                <tbody id="corpoTabelaProduto">
-                </tbody>
-            </table>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <script src="js/meuscript.js"></script>
+
+    <div class="container">
+        <table class="table table-striped table-hover" id="TabelaProduto">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Preco</th>
+                    <th scope="col">Peso</th>
+                    <th scope="col">Barra</th>
+                    <th scope="col">Excluir</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Local</th>
+                </tr>
+            </thead>
+            <tbody id="corpoTabelaProduto">
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="js/meuscript.js"></script>
 </body>
 
 </html>
