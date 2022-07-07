@@ -1,0 +1,126 @@
+1 Significa que o flask nao esta instalado na maquina/precisa instalar o flask no terminal usando 'pip install'
+
+2 No testar_planta.py precisa colocar no inicio do codigo o 'from ../modelo/planta.py import Planta
+
+3 	"a) dados = request.get_json()" : para colocar em uma variavel os dados em formato json
+
+	"b) alguem = Pessoa.query.get(id)" : colocar em uma variavel uma instancia da classe Pessoa pelo id dela
+	
+	"c) alguem.email = dados['email']" : atualizar os dados de um objeto ja existente para os dados informados
+	
+	"d) if classe == "Pessoa":" : verificar se a classe da variavel é a classe "Pessoa", e se sim executar o codigo a seguir
+	
+	"e) alguem_j = alguem.json()
+   retorno = {'resultado': 'ok'}
+   retorno.update({'detalhes': alguem_j})" : transformar a variavel 'alguem' para o formato json e formar a mensagem de retorno 
+   
+ 	"f) @app.route("/retornar/<string:classe>/<int:id>", methods=['get'])
+   def retornar(classe, id):" : encontrar uma isntancia do de uma classe pelo id usando o metodo GET
+   
+   
+4
+$(document).on("click", ".link_editar_pessoa", function () {
+    eu = $(this).attr('id'); 
+    id_pessoa = eu.split('_')[2] 
+    sessionStorage.setItem('id_pessoa', id_pessoa);
+    window.location = "form_atualizar_pessoa.html";
+});
+
+a)
+(3) guardar o id na sessão
+(2) editar_pessoa_N => obter id da pessoa
+(4) encaminhar para a página de edição da pessoa
+(1) obter id do elemento clicado
+
+b)eu = "editar_pessoa_19"
+  id_pessoa = "19"
+  
+c)abre uma janela com o local indicado("form_atualizar_pessoa.html")
+
+5 
+(1) página de listagem exibe todos os usuários
+(6) sistema notifica o usuário de que as alterações foram efetivadas com sucesso
+(2) usuário clica no link “editar”, referente a um usuário específico
+(5) usuário clica no botão “salvar”
+(4) usuário altera os dados no formulário de edição
+(3) uma página exibe os dados do usuário em um formulário, de forma editável
+
+
+6 ???
+
+7 ???
+
+8 ???
+
+9 economizar tempo e energia na produção de um html ou css
+
+10 no segundo tete ele esta mudando o codigo dentro de um navegador de rede
+
+
+https://docs.google.com/document/d/1C-CiK34h1cIjA45GarXWtH1h0_anlwM1BKlfCXb9uuU/edit?usp=sharing 
+
+
+RESPOSTAS
+
+https://docs.google.com/document/d/1uFa8cpUGR1m2m8d85ysnQ58HxbfYxNlsX2GxHHsj6Lc/edit?usp=sharing
+
+1 RESPOSTA: esse erro acontece porque está faltando um módulo. Deve-se instalar o módulo apontado no erro, com o comando pip3 install flask.
+
+2 RESPOSTA: Deve-se criar um programa (por exemplo, executar_testes.py) dentro do diretório “sistema” que execute o programa testar_planta.py. Dessa forma, o testar_planta vai conseguir acessar o planta.py, pois o arquivo que está em um nível superior do diretório conhece os arquivos que estão nos níveis iguais e inferiores (subpastas). 
+
+3
+a) dados = request.get_json()  
+
+RESPOSTA: obter dados da requisição, e converter esses dados para um dicionário, importando esses dados com a suposição de que eles estão vindo em formato json.
+
+b) alguem = Pessoa.query.get(id)
+
+c) alguem.email = dados['email']
+
+d) if classe == "Pessoa":
+
+e) alguem_j = alguem.json()
+   retorno = {'resultado': 'ok'}
+   retorno.update({'detalhes': alguem_j})
+
+f) @app.route("/retornar/<string:classe>/<int:id>", methods=['get'])
+   def retornar(classe, id):
+   
+4 
+a)
+(   ) guardar o id na sessão
+(   ) editar_pessoa_N => obter id da pessoa
+(   ) encaminhar para a página de edição da pessoa
+(   ) obter id do elemento clicado
+
+b)RESPOSTA: eu = “editar_pessoa_19”, e id_pessoa = “19”
+
+c)
+
+5
+( 1 ) página de listagem exibe todos os usuários
+(    ) sistema notifica o usuário de que as alterações foram efetivadas com sucesso
+(   ) usuário clica no link “editar”, referente a um usuário específico
+(    ) usuário clica no botão “salvar”
+(    ) usuário altera os dados no formulário de edição
+(    ) uma página exibe os dados do usuário em um formulário, de forma editável
+
+6 RESPOSTA: ainda que o sistema de arquivos permita o uso de parênteses em nome de diretório, o python tem problemas para executar programas que contém parênteses na linha de execução. Deve-se, portanto, renomear a pasta que contém o parênteses, removendo esse caracter.
+
+7
+
+8
+a) back-end desenvolvido em python/flask
+b) servidor web de páginas HTML
+c) servidor de banco de dados MySql
+
+RESPOSTA:
+a) 5000 
+b) 80
+c) 3306
+
+9
+
+10
+
+
